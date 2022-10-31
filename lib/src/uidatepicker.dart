@@ -95,14 +95,8 @@ class _UIDatePickerState extends State<UIDatePicker> {
       creationParams["tintColor"] = widget.tintColor?.value.toRadixString(16);
     }
     if (widget.backgroundColor != null) {
-      final backgroundColor = widget.backgroundColor?.value;
-      if (backgroundColor != null) {
-        final backgroundColorHexStr = backgroundColor.toRadixString(16);
-        creationParams["backgroundColor"] = backgroundColorHexStr.length == 8
-            ? backgroundColorHexStr.substring(2) +
-                backgroundColorHexStr.substring(0, 2)
-            : '${backgroundColorHexStr}00';
-      }
+      creationParams["backgroundColor"] =
+          widget.backgroundColor?.value.toRadixString(16).padLeft(8, '0');
     }
     if (widget.borderColor != null) {
       creationParams["borderColor"] =
