@@ -89,10 +89,12 @@ class _UIDatePickerState extends State<UIDatePicker> {
       creationParams["maximumDate"] = widget.maximumDate?.toIso8601String();
     }
     if (widget.textColor != null) {
-      creationParams["textColor"] = widget.textColor?.value.toRadixString(16);
+      creationParams["textColor"] =
+          widget.textColor?.value.toRadixString(16).padLeft(8, '0');
     }
     if (widget.tintColor != null) {
-      creationParams["tintColor"] = widget.tintColor?.value.toRadixString(16);
+      creationParams["tintColor"] =
+          widget.tintColor?.value.toRadixString(16).padLeft(8, '0');
     }
     if (widget.backgroundColor != null) {
       creationParams["backgroundColor"] =
@@ -100,7 +102,7 @@ class _UIDatePickerState extends State<UIDatePicker> {
     }
     if (widget.borderColor != null) {
       creationParams["borderColor"] =
-          widget.borderColor?.value.toRadixString(16);
+          widget.borderColor?.value.toRadixString(16).padLeft(8, '0');
     }
     if (widget.borderWidth != null) {
       creationParams["borderWidth"] = widget.borderWidth;
