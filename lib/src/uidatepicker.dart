@@ -72,6 +72,7 @@ class UIDatePicker extends StatefulWidget {
 
 class _UIDatePickerState extends State<UIDatePicker> {
   MethodChannel? _channel;
+  int? _viewId;
 
   @override
   Widget build(BuildContext context) {
@@ -141,8 +142,12 @@ class _UIDatePickerState extends State<UIDatePicker> {
   }
   
   @override
-  void dispose() {
+  Future<void> dispose() async {
     debugPrint('UiKitView disposed');
+    final viewId = _viewid;
+    if (viewId != null) {
+      await SystemChannels.platform_views.invokeMethod<void>('dispose', _viewId);
+    }
     super.dispose();
   }
 }
