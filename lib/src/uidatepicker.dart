@@ -144,7 +144,7 @@ class _UIDatePickerState extends State<UIDatePicker> {
   @override
   Future<void> dispose() async {
     debugPrint('UiKitView disposed');
-    final viewId = _viewid;
+    final viewId = _viewId;
     if (viewId != null) {
       await SystemChannels.platform_views.invokeMethod<void>('dispose', _viewId);
     }
