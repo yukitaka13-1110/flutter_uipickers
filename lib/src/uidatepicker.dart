@@ -124,6 +124,7 @@ class _UIDatePickerState extends State<UIDatePicker> {
       creationParams: creationParams,
       creationParamsCodec: const StandardMessageCodec(),
       onPlatformViewCreated: (int id) {
+        _viewId = id;
         _channel = MethodChannel('FLDatePicker/$id');
         _channel?.setMethodCallHandler(_channelCallHandler);
       },
@@ -147,6 +148,7 @@ class _UIDatePickerState extends State<UIDatePicker> {
     final viewId = _viewId;
     if (viewId != null) {
       await SystemChannels.platform_views.invokeMethod<void>('dispose', _viewId);
+      _viewId = null;
     }
     super.dispose();
   }
